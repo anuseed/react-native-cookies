@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "powerUpName": " Beetle Power",
+    "increase": 5,
+    "cost": 50
+  },
+  {
+    "id": 2,
+    "powerUpName": "Moth Power",
+    "increase": 10,
+    "cost": 100
+  },
+  {
+    "id": 3,
+    "powerUpName": "Wasp Power",
+    "increase": 50,
+    "cost": 200
+  },
+  {
+    "id": 4,
+    "powerUpName": " Butterfly Power",
+    "increase": 100,
+    "cost": 1000
+  },
+  {
+    "id": 5,
+    "powerUpName": " Bee Power",
+    "increase": 300,
+    "cost": 2000
+  },
+  {
+    "id": 6,
+    "powerUpName": "Bumblebee Power",
+    "increase": 500,
+    "cost": 10000
+  },
+  {
+    "id": 7,
+    "powerUpName": " Hoverfly Power",
+    "increase": 1000,
+    "cost": 100000
+  }
+]

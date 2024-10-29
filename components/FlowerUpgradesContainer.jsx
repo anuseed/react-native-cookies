@@ -1,9 +1,4 @@
-import {
-  UITextView,
-  UIScrollView,
-  SafeAreaProvider,
-  SafeAreaView,
-} from "react-native";
+import { Text, ScrollView, SafeAreaProvider, SafeAreaView } from "react-native";
 
 export default function FlowerUpgradesContainer(props) {
   function handleUpgrade() {
@@ -13,12 +8,12 @@ export default function FlowerUpgradesContainer(props) {
   return (
     <SafeAreaProvider>
       <SafeAreaView>
-        <UIScrollView className="flowerUpgradesContainer">
-          <UITextView>{props.upgrade.powerUpName}</UITextView>
-          <UITextView>Flowers Per Second: {props.upgrade.increase}</UITextView>
-          <UITextView>Cost: {props.upgrade.cost} flowers</UITextView>
-          <button onPress={handleUpgrade}>Buy</button>
-        </UIScrollView>
+        <ScrollView className="flowerUpgradesContainer">
+          <Text>{props.upgrade.powerUpName}</Text>
+          <Text>Flowers Per Second: {props.upgrade.increase}</Text>
+          <Text>Cost: {props.upgrade.cost} flowers</Text>
+          <button onClick={handleUpgrade}>Buy</button>
+        </ScrollView>
       </SafeAreaView>
     </SafeAreaProvider>
   );
