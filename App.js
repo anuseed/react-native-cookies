@@ -24,8 +24,8 @@ export default function App() {
   }, [flowersPerSecondCount]);
   return (
     <View style={styles.container}>
-      <FlowerCountContainer />
-      <FlowersPerClickContainer />
+      <FlowerCountContainer flowerCount={flowerCount} addFlower={addFlower} />
+      <FlowersPerClickContainer flowersPerSecondCount={flowersPerSecondCount} />
 
       <StatusBar style="auto" />
     </View>
