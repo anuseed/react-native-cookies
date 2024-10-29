@@ -3,7 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 import React, { useState, useEffect } from "react";
 import FlowerCountContainer from "./components/FlowerCountContainer";
 import FlowersPerClickContainer from "./components/FlowersPerClickContainer";
-// import FlowerUpgradesContainer from "./components/FlowerUgradesContainer";
 
 export default function App() {
   const [flowersPerSecondCount, setFlowerPerSecondCount] = useState(1);
@@ -25,9 +24,8 @@ export default function App() {
   }, [flowersPerSecondCount]);
   return (
     <View style={styles.container}>
-      <FlowerCountContainer flowerCount={flowerCount} addFlower={addFlower} />
-      <FlowersPerClickContainer flowersPerSecondCount={flowersPerSecondCount} />
-      {/* <FlowerUpgradesContainer /> */}
+      <FlowerCountContainer />
+      <FlowersPerClickContainer />
 
       <StatusBar style="auto" />
     </View>
