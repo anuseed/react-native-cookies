@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Alert } from "react-native";
 import React, { useState, useEffect } from "react";
 import FlowerCountContainer from "./components/FlowerCountContainer";
 import FlowersPerClickContainer from "./components/FlowersPerClickContainer";
@@ -30,7 +30,7 @@ export default function App() {
       setFlowerPerSecondCount(flowersPerSecondCount + upgrade.increase);
       setFlowerCount(flowerCount - upgrade.cost);
     } else {
-      alert("You do not have enough flowers to buy this power!");
+      Alert.alert("You do not have enough flowers to buy this power!");
     }
   }
 
@@ -39,10 +39,10 @@ export default function App() {
       <FlowerCountContainer flowerCount={flowerCount} addFlower={addFlower} />
       <FlowersPerClickContainer flowersPerSecondCount={flowersPerSecondCount} />
       <ScrollView>
-        <Text className="powerTitle">Powers</Text>
+        <Text>Powers</Text>
         {flowerData.map((upgrade) => (
           <ScrollView key={upgrade.id}>
-            <FlowerUpgradesContainer upgrade={upgrade} onClick={handleClick} />
+            <FlowerUpgradesContainer upgrade={upgrade} onPress={handleClick} />
           </ScrollView>
         ))}
       </ScrollView>
