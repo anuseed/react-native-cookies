@@ -2,12 +2,14 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 import FlowerCountContainer from "./components/FlowerCountContainer";
 import FlowersPerClickContainer from "./components/FlowersPerClickContainer";
+import FlowerUpgradesContainer from "./components/FlowerUpgradesContainer";
 
 export default function App() {
   return (
     <View style={styles.container}>
       <FlowerCountContainer />
       <FlowersPerClickContainer />
+      <FlowerUpgradesContainer />
 
       <StatusBar style="auto" />
     </View>
