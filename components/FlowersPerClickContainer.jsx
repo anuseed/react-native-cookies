@@ -1,11 +1,13 @@
-import { Text, View } from "react-native";
+import { Text, View, SafeAreaView } from "react-native";
 
 export default function FlowersPerClickContainer(props) {
   return (
-    <View style={{ padding: 20 }}>
-      <Text>
-        Your flower power is {props.flowersPerSecondCount} flowers per second.
-      </Text>
-    </View>
+    <SafeAreaView>
+      <View style={{ padding: 20 }}>
+        <Text>
+          Your flower power is {props.flowersPerSecondCount} flowers per second.
+        </Text>
+      </View>
+    </SafeAreaView>
   );
 }

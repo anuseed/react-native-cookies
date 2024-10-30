@@ -36,6 +36,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar style="auto" />
       <FlowerCountContainer flowerCount={flowerCount} addFlower={addFlower} />
       <FlowersPerClickContainer flowersPerSecondCount={flowersPerSecondCount} />
       <ScrollView>
@@ -46,7 +47,6 @@ export default function App() {
           </ScrollView>
         ))}
       </ScrollView>
-      <StatusBar style="auto" />
     </View>
   );
 }
@@ -54,7 +54,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#f9db83",
     alignItems: "center",
     justifyContent: "center",
   },
