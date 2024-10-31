@@ -1,0 +1,13 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Twelny.ttf",
+      "sha1": "462c2d950a9226b246911d646cee30a0cf06d08b"
+    },
+    {
+      "path": "assets/fonts/Waffle-Mango.woff",
+      "sha1": "fd03b133b8568bc3a589fdf012caa56cf0200aa4"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import "expo-dev-client";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -17,6 +18,11 @@ import flowerData from "./lib/flowerData.json";
 import SideBar from "./components/SideBar";
 import { Node } from "react";
 import MenuDrawer from "react-native-side-drawer";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
+// this makes sure that the fonts are loaded while the splash screen is running
 
 const Drawer = (props) => {
   const position = "left";
@@ -26,6 +32,7 @@ const Drawer = (props) => {
       <ScrollView>
         {flowerData.map((upgrade) => (
           <FlowerUpgradesContainer
+            style={styles.upgradesContainer}
             key={upgrade.id}
             upgrade={upgrade}
             onPress={props.handleClick}
@@ -43,10 +50,12 @@ const Drawer = (props) => {
       open={props.open}
       drawerContent={drawerContent()}
       position={position}
-      drawerPercentage={40}
+      // not sure if drawerPercentage works as no matter what you input there is no change
+      drawerPercentage={50}
       animationTime={250}
       overlay={true}
       opacity={0.5}
+      // drawerStyle={{ width: "50%" }}
     >
       {props.children}
     </MenuDrawer>
@@ -57,10 +66,16 @@ export default function App() {
   const [flowersPerSecondCount, setFlowerPerSecondCount] = useState(1);
   const [flowerCount, setFlowerCount] = useState(0);
   const [openDrawer, setDrawerOpen] = useState(false);
+  const [loaded, error] = useFonts({
+    Twelny: require("./assets/fonts/Twelny.ttf"),
+  });
 
-  function addFlower() {
-    setFlowerCount(flowerCount + 1);
-  }
+  useEffect(() => {
+    if (loaded || error) {
+      SplashScreen.hideAsync();
+    }
+  }, [loaded, error]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setFlowerCount(
@@ -72,7 +87,14 @@ export default function App() {
       clearInterval(interval);
     };
   }, [flowersPerSecondCount]);
+  // the if statement below cannot be put before a hook - like useEffect - so it needs to be placed after the useEffect above
+  if (!loaded && !error) {
+    return null;
+  }
 
+  function addFlower() {
+    setFlowerCount(flowerCount + 1);
+  }
   function handleClick(upgrade) {
     if (flowerCount == upgrade.cost || flowerCount > upgrade.cost) {
       setFlowerPerSecondCount(flowersPerSecondCount + upgrade.increase);
@@ -92,6 +114,7 @@ export default function App() {
     >
       <SafeAreaView style={styles.container}>
         <StatusBar style="auto" />
+        <Text style={styles.Twelny}>Flower Power</Text>
         <FlowerCountContainer flowerCount={flowerCount} addFlower={addFlower} />
         <FlowersPerClickContainer
           flowersPerSecondCount={flowersPerSecondCount}
@@ -128,15 +151,6 @@ export default function App() {
   );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     // flex: 1,
-//     backgroundColor: "#f9db83",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-// });
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -144,12 +158,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  Twelny: {
+    fontFamily: "Twelny",
+    fontSize: 40,
+  },
+  // upgradeContainer: {
+  //   padding: 240,
+  // },
   drawerContent: {
     flex: 1,
     backgroundColor: "#ffebcd",
     padding: 20,
+    margin: 20,
   },
   drawerHeader: {
+    fontFamily: "Twelny",
     fontSize: 24,
     fontWeight: "bold",
     marginBottom: 10,
